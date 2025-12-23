@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>i47® – Native Language Platform</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+
+  /* African-inspired layered background */
+  background:
+    url("https://www.transparenttextures.com/patterns/african-2.png"),
+    radial-gradient(circle at top left, rgba(46,204,113,0.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(27,94,32,0.15), transparent 40%),
+    linear-gradient(to bottom, #2ecc71, #ffffff);
+
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-size: auto, 600px 600px, 600px 600px, cover;
+}
+
+
+header {
+  padding: 15px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+/* TOP TABS */
+.tabs {
+  display: flex;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.tab-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.green { background: #dff5e3; }
+.yellow { background: #f5d76e; }
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.card:hover { transform: scale(1.05); }
+
+.language-card {
+  background: #dff5e3;
+  border: 2px solid #1b5e20;
+}
+
+.icon { font-size: 32px; }
+
+.section {
+  display: none;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #2e7d32;
+  font-style: italic;
+}
+.african-art {
+  position: fixed;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.art-lion {
+  top: 80px;
+  left: 20px;
+  font-size: 120px;
+}
+
+.art-shield {
+  bottom: 80px;
+  right: 30px;
+  font-size: 110px;
+}
+
+.art-mountain {
+  top: 50%;
+  right: 10px;
+  font-size: 140px;
+}
+
+</style>
+</head>
+
+<body>
+<!-- African Iconography -->
+<div class="african-art art-lion">🦁</div>
+<div class="african-art art-shield">🛡️</div>
+<div class="african-art art-mountain">⛰️</div>
+
+
+<header>i47®</header>
+
+<!-- TOP NAV TABS -->
+<div class="tabs">
+  <button class="tab-btn green" onclick="toggleSection('somali')">Somali</button>
+  <button class="tab-btn green" onclick="toggleSection('luo')">Luo</button>
+  <button class="tab-btn yellow" onclick="toggleSection('feedback')">Feedback</button>
+</div>
+
+<div class="container"> 
+
+
+
+
+<!-- SOMALI SECTION -->
+<div id="somali" class="section">
+
+  <h2>Somali Categories</h2>
+
+  <div class="grid">
+    <div class="card" onclick="openContent('alphabet')">🔤 Alphabet</div>
+    <div class="card" onclick="openContent('numbers')">🔢 Numbers</div>
+    <div class="card" onclick="openContent('family')">👨‍👩‍👧 Family</div>
+    <div class="card" onclick="openContent('animals')">🐄 Animals</div>
+    <div class="card" onclick="openContent('greetings')">👋 Greetings</div>
+    <div class="card" onclick="openDictionary()">📘 Dictionary 🔒</div>
+    <div class="card" onclick="openTTS()">🔊 Text-to-Speech 🔒</div>
+
+  </div>
+
+  <!-- CONTENT DISPLAY -->
+  <div id="contentBox" class="section" style="margin-top:20px;">
+    <iframe id="contentFrame"></iframe>
+  </div>
+
+</div>
+
+<!-- LUO SECTION -->
+<div id="luo" class="section">
+  <h2>🌍 Luo Language</h2>
+  <p>⏳ Be patient — Luo language support is coming soon.</p>
+</div>
+
+<!-- FEEDBACK SECTION -->
+<div id="feedback" class="section">
+  <h2>User Feedback</h2>
+  <p>Your feedback helps preserve African languages.</p>
+
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdiCA4kR2_jN2ajI32jrvNKAIl0eKUY4YBVgod6q3eqQMSeQQ/viewform?embedded=true"
+    width="100%" 
+    height="700" 
+    frameborder="0">
+  </iframe>
+</div>
+
+<div class="footer">
+“Language is identity. Preserving it preserves people.”
+</div>
+
+</div>
+
+<script>
+const links = {
+ alphabet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?gid=1640331858&single=true",
+ numbers:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?gid=1405329022&single=true",
+ family:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?gid=1170462479&single=true",
+ animals:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?gid=937722853&single=true",
+ greetings:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?gid=600277276&single=true"
+};
+
+function hideAllSections() {
+ document.querySelectorAll('.section').forEach(s => s.style.display="none");
+ document.getElementById("contentFrame").src="";
+}
+
+function toggleSection(id){
+ const section = document.getElementById(id);
+ const isVisible = section.style.display === "block";
+ hideAllSections();
+ section.style.display = isVisible ? "none" : "block";
+}
+
+function openContent(cat){
+ document.getElementById("contentBox").style.display="block";
+ document.getElementById("contentFrame").src=links[cat];
+}
+
+function openDictionary(){
+  document.getElementById("contentBox").style.display="block";
+  document.getElementById("contentBox").innerHTML =
+    "<h2>📘 Dictionary</h2>" +
+    "<p><strong>🔒 Premium feature</strong></p>" +
+    "<p>Full word search, meanings, examples, and native audio will be available.</p>" +
+    "<p>Status: <em>Coming soon</em></p>";
+}
+function openTTS(){
+  document.getElementById("contentBox").style.display="block";
+  document.getElementById("contentBox").innerHTML =
+    "<h2>🔊 Text-to-Speech</h2>" +
+    "<p><strong>🔒 Premium feature</strong></p>" +
+    "<p>Type or paste Somali text and hear native pronunciation.</p>" +
+    "<p>Status: <em>Coming soon</em></p>";
+}
+
+</script>
+
+</body>
+</html>
